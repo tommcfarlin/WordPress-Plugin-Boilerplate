@@ -62,16 +62,19 @@ class Plugin_Name_Public {
 	public function enqueue_styles() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Plugin_Name_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Plugin_Name_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+         * This function is provided for demonstration purposes only. 
+         * It will add_filter() the default plugin script or sytle.
+         *
+         * With the current plugin structure, an instance of this class
+         * is created by Plugin_Name and then passed to add_action()
+         * defined in Plugin_Name_Loader.
+         * 
+         * Then, the run() function defined in Plugin_Name_Loader will
+         * connect all the hooks that you have registered with add_action()
+         * in the plugin with wordpress hooks by calling add_filter()
+         * on each.
+         * 
+         */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/plugin-name-public.css', array(), $this->version, 'all' );
 
